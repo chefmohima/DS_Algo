@@ -1,4 +1,4 @@
-# Given an array of numbers sorted in an ascending order, find the floor of a given number ‘key’. 
+# Given an array of numbers sorted in an ascending order, find the floor of a given number ‘key’
 # The floor of the ‘key’ will be the largest element in the given array smaller than or equal to the ‘key’.
 # Write a function to return the floor of the ‘key’. If there isn’t any ceiling return -1.
 # Example: Floor of key 12 in a list [1, 3, 8, 10, 15] = 10
