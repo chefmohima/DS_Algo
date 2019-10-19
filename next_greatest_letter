@@ -1,0 +1,21 @@
+# Given an array of lowercase letters sorted in ascending order, find the smallest letter in the given array greater than a given ‘key’.
+# Assume the given array is a circular list, which means that the last letter is assumed to be connected with the first letter. This also means that the smallest letter in the given array is greater than the last letter of the array and is also the first letter of the array.
+# Write a function to return the next letter of the given ‘key’.
+
+def next_greatest_letter(letters, key):
+    if key < letters[0] or key > letters[-1]:
+        return letters[0]       # as list is circular
+        
+    start, end = 0, len(letters)-1
+    while start <= end:
+        mid =  (start+end) // 2
+        if letters[mid] <= key:  # do not return mid if value equals key
+            start = mid+1
+        else:
+            end = mid-1
+    return letters[start % len(letters)]  # as list is circular
+            
+    
+print(next_greatest_letter(['a', 'c', 'f', 'h'], 'f'))
+print(next_greatest_letter(['a', 'c', 'f', 'h'], 'b'))
+print(next_greatest_letter(['a', 'c', 'f', 'h'], 'm'))
