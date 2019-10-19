@@ -1,15 +1,20 @@
-# Find an item in a SORTEDlist, if it exists return its index, else return -1
+# Find an item in a SORTED list, if it exists return its index, else return -1
 
 def binary_search(l,item):
-    start = 0
-    end = len(l)-1
+    # Initialize search space
+    start, end =  0, len(l)-1 
+    
+    # Continue to search till there is anything to search
     while start <= end:
         mid = (start+end)//2
         if l[mid] == item:
+            # found item
             return mid
         elif l[mid] > item:
+            # look left for smaller elements
             end = mid-1
         elif l[mid] < item:
+            # look right for higher elements
             start = mid+1
             
     return -1
