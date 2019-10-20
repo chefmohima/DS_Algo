@@ -1,35 +1,52 @@
-def search_rotated_array(arr, key):
-  start, end = 0, len(arr) - 1
-  last = arr[-1]
-  while start <= end:
-      mid = (start+end)//2
-      if arr[mid] == key:
-          return mid
-      # first determine which half of the array are you in
-      # then compare key to arr[mid]
-      if arr[mid] > last:
-          # in first half, decreases to left
-          if arr[mid] > key:
-              end = mid-1
-          else:
-              start = mid+1
-      elif arr[mid] <= last:
-          # in second half, increases to right
-          if arr[mid] > key:
-              start = mid+1
-          else:
-              end = mid-1
-  return mid
-              
+class Solution:
+  
+    # function to find index of minimum number
+    def findMin(self, nums):
+        last = nums[-1]
+        start, end = 0, len(nums)-1
+        while start <= end:
+            mid = (start+end)//2
+            # check if minimum
+            if nums[mid] <= last and (nums[mid] < nums[mid-1] or mid==0):
+                return mid
+            else:
+                if nums[mid] > last :
+                    # in 1st half, move right
+                    start = mid+1
+                elif nums[mid] < last:
+                    # in second half, move left
+                    end = mid-1
+        return mid
+    # function for binary search
+    def binary_search(self, nums,key):
+        start, end = 0, len(nums)-1
+        while start <= end:
+            mid = (start+end)//2
+            if nums[mid] == key:
+                return nums[mid]
+            elif nums[mid] > key:
+                end = mid-1
+            else:
+                start = mid+1
+        return -1
       
-              
+    # Actual function for the problem
+    def search(self, nums, target):
+        if not nums:
+            return -1
+        # first find index of minimum number
+        # we know that arr[:minindex] will be sorted and arr[minindex:] will be sorted
+        minindex = self.findMin(nums)
+        
+        # determine where the target lies? first half or second half and call the binary search on corresponding half
+        last = nums[-1]
+        if target > last:
+            num = self.binary_search(nums[:minindex], target)
+        else:
+            num = self.binary_search(nums[minindex:], target)
+        if num != -1:
+            return nums.index(num)
+        else:
+            return -1
     
-    
 
-
-
-def main():
-  print(search_rotated_array([10, 15, 1, 3, 8], 15))
-  print(search_rotated_array([4, 5, 7, 9, 10, -1, 2], 10))
-
-main()
