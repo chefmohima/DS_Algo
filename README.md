@@ -1,7 +1,7 @@
 # DS_Algo
 Practice Problem solutions
 
-| Section       | Problems           | Solutions  | Similar LC problems |
+| Section       | Problems           | Comments  | Similar LC problems |
 | ------------- | -------------      |------------|----------------------
-| Lists         | [lists_threesum](./lists_threeSum.py)   |          |https://leetcode.com/problems/3sum/
+| Lists         | [lists_threesum](./lists_threeSum.py)   |  extends 2 sum problem        |https://leetcode.com/problems/3sum/
 |               | Content Cell  |            |
